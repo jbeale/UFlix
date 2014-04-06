@@ -67,7 +67,7 @@ class DATABASE_CONFIG {
 		'host' => 'CSE349WEBSERVER',
 		'login' => 'sa',
 		'password' => 'Blue1234',
-		'database' => 'movie',
+		'database' => 'movieDB',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
