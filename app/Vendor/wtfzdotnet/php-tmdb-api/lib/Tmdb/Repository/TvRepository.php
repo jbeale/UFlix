@@ -13,6 +13,8 @@
 namespace Tmdb\Repository;
 
 use Tmdb\Factory\TvFactory;
+use Tmdb\Model\Collection\Videos;
+use Tmdb\Model\Common\Video;
 use Tmdb\Model\Tv;
 use Tmdb\Model\Tv\QueryParameter\AppendToResponse;
 
@@ -122,6 +124,22 @@ class TvRepository extends AbstractRepository
     }
 
     /**
+     * Get the images (posters and backdrops) for a TV series.
+     *
+     * @param $id
+     * @param $parameters
+     * @param $headers
+     * @return Videos|Video[]
+     */
+    public function getVideos($id, array $parameters = array(), array $headers = array())
+    {
+        $data = $this->getApi()->getVideos($id, $this->parseQueryParameters($parameters), $headers);
+        $tv   = $this->getFactory()->create(array('videos' => $data));
+
+        return $tv->getVideos();
+    }
+
+    /**
      * Return the Tvs API Class
      *
      * @return \Tmdb\Api\Tv
@@ -180,6 +198,22 @@ class TvRepository extends AbstractRepository
     {
         return $this->getFactory()->createResultCollection(
             $this->getApi()->getOnTheAir($options, $headers)
+        );
+    }
+
+    /**
+     * Get the list of TV shows that air today.
+     *
+     * Without a specified timezone, this query defaults to EST (Eastern Time UTC-05:00).
+     *
+     * @param  array $options
+     * @param  array $headers
+     * @return Tv[]
+     */
+    public function getAiringToday(array $options = array(), array $headers = array())
+    {
+        return $this->getFactory()->createResultCollection(
+            $this->getApi()->getAiringToday($options, $headers)
         );
     }
 }

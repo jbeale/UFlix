@@ -106,7 +106,7 @@ class Client
     private $cachePath;
 
     /**
-     * Stores wether the cache is enabled or not
+     * Stores whether the cache is enabled or not
      *
      * @var boolean
      */
@@ -409,6 +409,22 @@ class Client
     }
 
     /**
+     * @return Api\Timezones
+     */
+    public function getTimezonesApi()
+    {
+        return new Api\Timezones($this);
+    }
+
+    /**
+     * @return Api\GuestSession
+     */
+    public function getGuestSessionApi()
+    {
+        return new Api\GuestSession($this);
+    }
+
+    /**
      * @return HttpClient|HttpClientInterface
      */
     public function getHttpClient()
@@ -445,6 +461,10 @@ class Client
     public function setSecure($secure)
     {
         $this->secure = $secure;
+
+        if ($this->httpClient instanceof HttpClientInterface) {
+            $this->getHttpClient()->setBaseUrl($this->getBaseUrl());
+        }
 
         return $this;
     }

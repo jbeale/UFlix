@@ -100,6 +100,7 @@ class Movies extends AbstractApi
     /**
      * Get the trailers for a specific movie id.
      *
+     * @deprecated TMDB changed the way of requesting trailers, see getVideos instead!
      * @param $movie_id
      * @param  array $parameters
      * @param  array $headers
@@ -262,5 +263,18 @@ class Movies extends AbstractApi
     public function rateMovie($id, $rating)
     {
         return $this->postJson('movie/' . $id . '/rating', array('value' => (float) $rating));
+    }
+
+    /**
+     * Get the videos (trailers, teasers, clips, etc...) for a specific movie id.
+     *
+     * @param $movie_id
+     * @param  array $parameters
+     * @param  array $headers
+     * @return mixed
+     */
+    public function getVideos($movie_id, array $parameters = array(), array $headers = array())
+    {
+        return $this->get('movie/' . $movie_id . '/videos', $parameters, $headers);
     }
 }

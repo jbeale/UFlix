@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "af2d4ce82385a1b0c340c84b5160b831",
+    "hash": "ee84682dbb4253bbc4e47dbe51c0f4bc",
     "packages": [
         {
             "name": "guzzle/guzzle",
@@ -193,16 +193,16 @@
         },
         {
             "name": "wtfzdotnet/php-tmdb-api",
-            "version": "v1.0.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wtfzdotnet/php-tmdb-api.git",
-                "reference": "90eaa2867c41cb563cacacb5b651a6d734f37308"
+                "reference": "08971f630e552d563b9e36b3e9e22783326e135a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wtfzdotnet/php-tmdb-api/zipball/90eaa2867c41cb563cacacb5b651a6d734f37308",
-                "reference": "90eaa2867c41cb563cacacb5b651a6d734f37308",
+                "url": "https://api.github.com/repos/wtfzdotnet/php-tmdb-api/zipball/08971f630e552d563b9e36b3e9e22783326e135a",
+                "reference": "08971f630e552d563b9e36b3e9e22783326e135a",
                 "shasum": ""
             },
             "require": {
@@ -249,7 +249,7 @@
                 "tvdb",
                 "wrapper"
             ],
-            "time": "2014-03-25 21:58:38"
+            "time": "2014-04-05 21:05:30"
         }
     ],
     "packages-dev": [

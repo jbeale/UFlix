@@ -16,8 +16,13 @@ require_once '../../../apikey.php';
 $token  = new \Tmdb\ApiToken(TMDB_API_KEY);
 $client = new \Tmdb\Client($token);
 
-$sessionToken = new \Tmdb\SessionToken(TMDB_SESSION_TOKEN);
+/**
+$sessionToken      = new \Tmdb\SessionToken(TMDB_SESSION_TOKEN);
 $client->setSessionToken($sessionToken);
+*/
+
+$guestSessionToken = new \Tmdb\GuestSessionToken(TMDB_GUEST_SESSION_TOKEN);
+$client->setSessionToken($guestSessionToken);
 
 $repository = new \Tmdb\Repository\MovieRepository($client);
 $rate = $repository->rate(49047, 6.5);

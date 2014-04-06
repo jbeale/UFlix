@@ -78,13 +78,22 @@ class TvRepositoryTest extends TestCase
 
     /**
      * @test
-     * @todo fix later
      */
     public function shouldGetOnTheAir()
     {
         $repository = $this->getRepositoryWithMockedHttpClient();
 
-        //$repository->getOnTheAir();
+        $repository->getOnTheAir();
+    }
+
+    /**
+     * @test
+     */
+    public function shouldGetAiringToday()
+    {
+        $repository = $this->getRepositoryWithMockedHttpClient();
+
+        $repository->getAiringToday();
     }
 
     /**
@@ -95,6 +104,16 @@ class TvRepositoryTest extends TestCase
         $repository = $this->getRepositoryWithMockedHttpClient();
 
         $repository->getTopRated();
+    }
+
+    /**
+     * @test
+     */
+    public function shouldGetVideos()
+    {
+        $repository = $this->getRepositoryWithMockedHttpClient();
+
+        $repository->getVideos(self::TV_ID);
     }
 
     protected function getApiClass()
