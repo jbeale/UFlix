@@ -18,7 +18,7 @@
 		<th>Summary</th>
 		<th>Studio</th>
 	</tr>
-	<?php foreach ($movies as $movie) : ?>
+	<?php foreach ($movies as $movie): ?>
 		<tr> 
 			<td> <?php echo $movie['Movie']['MovieId']?></td>
 			<td> <?php echo $movie['Movie']['Title']?></td>

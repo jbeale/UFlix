@@ -21,7 +21,10 @@
  * @since         CakePHP(tm) v 0.10.8.2117
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-//require 'app/Vendor/autoload.php';
+
+ //for composer
+ require_once dirname(__DIR__).'/Vendor/autoload.php';
+
 // Setup a 'default' cache configuration for use in the application.
 Cache::config('default', array('engine' => 'File'));
 
