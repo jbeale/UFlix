@@ -3,36 +3,48 @@
 
 <h1>Movies</h1>
 
+<div>
+	<ul>
+		<li><?php echo $this->Html->link(
+			'Add Movie',array('controller' => 'movies', 'action' => 'add') );?> </li>
+	</ul>
+
+
+
+</div>
 <table>
 	<tr>
-		<th>MovieId</th>
-		<th>Title</th>
-		<th>Year</th>
-		<th>Rating</th>
-		<th>Star</th>
-		<th>Release</th>
-		<th>DVDRelease</th>
-		<th>PostFilename</th>
-		<th>TrailerURL</th>
-		<th>Tagline</th>
-		<th>Summary</th>
-		<th>Studio</th>
+		<th>movie_id</th>
+		<th>title</th>
+		<th>rating</th>
+		<th>stars</th>
+		<th>release</th>
+		<th>posterFilename</th>
+		<th>trailerurl</th>
+		<th>tagline</th>
+		<th>summary</th>
 	</tr>
+	<?php if(!$movies): ?>
+	<tr> <td> No Movies in Database. </td></tr>
+	<?php else: ?>
 	<?php foreach ($movies as $movie): ?>
 		<tr> 
-			<td> <?php echo $movie['Movie']['MovieId']?></td>
-			<td> <?php echo $movie['Movie']['Title']?></td>
-			<td> <?php echo $movie['Movie']['Year']?></td>
-			<td> <?php echo $movie['Movie']['Rating']?></td>
-			<td> <?php echo $movie['Movie']['Star']?></td>
-			<td> <?php echo $movie['Movie']['Release']?></td>
-			<td> <?php echo $movie['Movie']['DVDRelease']?></td>
-			<td> <?php echo $movie['Movie']['PostFilename']?></td>
-			<td> <?php echo $movie['Movie']['TrailerURL']?></td>
-			<td> <?php echo $movie['Movie']['Tagline']?></td>
-			<td> <?php echo $movie['Movie']['Summary']?></td>
-			<td> <?php echo $movie['Movie']['Studio']?></td>
+			<td> <?php echo $movie['Movie']['movie_id']?></td>
+			<td> <?php echo $this->Html->link( $movie['Movie']['title'],
+			array('controller' => 'movies', 'action' => 'view', $movie['Movie']['movie_id']));?></td>
+			<td> <?php echo $movie['Movie']['rating']?></td>
+			<td> <?php echo $movie['Movie']['stars']?></td>
+			<td> <?php echo $movie['Movie']['release']?></td>
+			<td> <?php echo $movie['Movie']['posterFilename']?></td>
+			<td> <?php echo $movie['Movie']['trailerurl']?></td>
+			<td> <?php echo $movie['Movie']['tagline']?></td>
+			<td> <?php echo $movie['Movie']['summary']?></td>
+			<td><?php echo $this->Html->link( 'Edit', array('action' => 'edit', $movie['Movie']['movie_id']));?></td>
+			<td><?php echo $this->Form->postLink( 'Delete', array('action' => 'delete', $movie['Movie']['movie_id']), 
+													array('confirm' => 'Are you sure?') );?></td>
 		</tr>
 	<?php endforeach; ?>
 	<?php unset ($movie); ?>
+	
+	<?php endif; ?>
 </table>

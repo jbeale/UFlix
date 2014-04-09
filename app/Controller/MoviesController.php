@@ -7,33 +7,83 @@
 
 class MoviesController extends AppController{
 	
-	public $helpers = array('Html', 'Form');
-
-	private $isInit = false;
-	private $token;
-	private $client;
-	private $repository;
-	private $TMDBseed;
+	public $helpers = array('Html', 'Form', 'Session');
+	public $components = array('TmdbWrapper', 'Session');
 	
 	public function index() {
 		$this->set('movies', $this->Movie->find('all'));
+	}
+	
+	public function seed($page = 100) {
+		$this->TmdbWrapper->getPopularMovies($page);
+		$this->set('movieSeeds', $this->TmdbWrapper->getMovieSeed());
+	}
+	
+	public function view($id) {
+		if(!$id) {
+			throw new NotFoundException(__('Invalid movie.'));
+		}
+		
+		$movie = $this->Movie->findByMovieId($id);
+		
+		if(!$movie) {
+			throw new NotFoundException(__('Invalid movie.'));
+		}
+		
+		$this->set('movie', $movie);
+	}
+	
+	public function add() {
+	
+		if($this->request->is('post')) {
+			$this->Movie->create();
+			if($this->Movie->save($this->request->data)) {
+				$this->Session->setFlash("Movie saved.");
+				return $this->redirect(array('action' => 'index'));
+			}
+			$this->Session->setFlash("Unable to add movie.");
+		}
+		
+	}
+	
+	public function edit($id) {
+
+		if(!$id) {
+			throw new NotFoundException("Invalid movie.");
+		}
+		$movie = $this->Movie->findByMovieId($id);
+		
+		if(!$movie) {
+			throw new NotFoundException("Invalid movie.");
+		}
+		
+		if($this->request->is(array('post','put'))) {
+		
+			if($this->Movie->save($this->request->data['Movie'])) {
+				$this->Session->setFlash("Movie Updated");
+				$this->redirect(array('action' => 'index'));
+			}
+			
+			$this->Session->setFlash("Unable to update movie.");
+		}
+		
+		if(!$this->request->data) {
+			$this->request->data = $movie;
+		}
 		
 
-	}
-	
-	public function seed($num = 100) {
-		if(! $this->isInit ){
-			$this->init_tmdb();
-		}
-	
-		$this->TMDBseed = $this->repository->getPopular();
-		$this->set('TMDBseeds', $this->TMDBseed);
-	}
-	
-	private function init_tmdb() {
-		$this->token = new \Tmdb\ApiToken('291cd0ae04af02e8f1a3da69ef7ef9b0');
-		$this->client = new \Tmdb\Client($this->token);
-		$this->repository = new \Tmdb\Repository\MovieRepository($this->client);
 		
 	}
+	
+	public function delete($id) {
+		if ($this->request->is('get')) {
+			throw new MethodNotAllowedException();
+		}
+		
+		if($this->Movie->delete($id)) {
+			$this->Session->setFlash( __('The movie with id: %s has been deleted.', h($id) ));
+			return $this->redirect(array('action' => 'index'));
+		}
+	}
+
 }
