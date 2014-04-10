@@ -8,7 +8,7 @@
 class GenresController extends AppController{
 	
 	public $helpers = array('Html', 'Form', 'Session');
-	public $components = array('TmdbWrapper', 'Session');
+	public $components = array('Session');
 	
 	public function index() {
 		$this->set('genres', $this->Genre->find('all'));
