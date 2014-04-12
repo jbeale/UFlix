@@ -6,7 +6,7 @@
 
 <?php
 	echo $this->Form->create('Company');
-	echo $this->Form->input('CompanyName');
+	echo $this->Form->input('companyName');
 	echo $this->Form->input('company_id', array('type' => 'hidden'));
 	echo $this->Form->end('Update Company');
 ?>

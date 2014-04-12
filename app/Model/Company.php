@@ -6,4 +6,8 @@ App::uses('AppModel','Model');
 
 class Company extends AppModel {
 	public $primaryKey = 'company_id';
+	
+	public $hasMany = array(
+		'CompaniesMovie'
+	};
 }

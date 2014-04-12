@@ -6,7 +6,7 @@
 <div>
 	<ul>
 		<li><?php echo $this->Html->link(
-			'Add Company',array('controller' => 'companiess', 'action' => 'add') );?> </li>
+			'Add Company',array('controller' => 'companies', 'action' => 'add') );?> </li>
 	</ul>
 
 
@@ -24,7 +24,7 @@
 		<tr> 
 			<td> <?php echo $company['Company']['company_id']?></td>
 			<td> <?php echo $this->Html->link( $company['Company']['companyName'],
-			array('controller' => 'companys', 'action' => 'view', $company['Company']['company_id']));?></td>
+			array('controller' => 'companies', 'action' => 'view', $company['Company']['company_id']));?></td>
 			
 			<td><?php echo $this->Html->link( 'Edit', array('action' => 'edit', $company['Company']['company_id']));?></td>
 			<td><?php echo $this->Form->postLink( 'Delete', array('action' => 'delete', $company['Company']['company_id']), 

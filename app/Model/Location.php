@@ -7,6 +7,8 @@ App::uses('AppModel','Model');
 class Location extends AppModel {
 	public $primaryKey = 'location_id';
 	
-	public $hasAndBelongsToMany = array (
-			'movielocations' => array( 'className' => 'Movie'));
+	public $hasMany = array(
+	'LocationsMovie'
+	);
+
 }
