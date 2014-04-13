@@ -6,9 +6,12 @@
 
 <?php
 	echo $this->Form->create('Credit');
-	echo $this->Form->input('movie_id');
-	echo $this->Form->input('role_id');
-	echo $this->Form->input('cast_id');
+	echo $this->Form->input('movie_id', array(
+		'options' => array($allMovies)));
+	echo $this->Form->input('role_id', array(
+		'options' => array($allRoles)));
+	echo $this->Form->input('cast_id', array(
+		'options' => array($allCasts)));
 	echo $this->Form->input('character');
 	echo $this->Form->input('credit_id', array('type' => 'hidden'));
 	echo $this->Form->end('Update Credit');

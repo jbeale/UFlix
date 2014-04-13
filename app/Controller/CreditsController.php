@@ -51,14 +51,14 @@ class CreditsController extends AppController{
 		if(!$id) {
 			throw new NotFoundException("Invalid credit.");
 		}
-		$credit = $this->Credit->findByMovieId($id);
+		$credit = $this->Credit->findByCreditId($id);
 		
 		if(!$credit) {
 			throw new NotFoundException("Invalid credit.");
 		}
 		
 		if($this->request->is(array('post','put'))) {
-		
+			
 			if($this->Credit->save($this->request->data['Credit'])) {
 				$this->Session->setFlash("Credit Updated");
 				$this->redirect(array('action' => 'index'));
@@ -68,6 +68,10 @@ class CreditsController extends AppController{
 		}
 		
 		if(!$this->request->data) {
+		
+			$this->set('allMovies',$this->Credit->CreditsBelongtoMovie->find('list'));
+			$this->set('allRoles', $this->Credit->CreditsBelongtoRole->find('list', array('fields' => array('roleName'))));
+			$this->set('allCasts', $this->Credit->CreditsBelongtoCast->find('list', array('fields' => array('castName'))));
 			$this->request->data = $credit;
 		}
 		
