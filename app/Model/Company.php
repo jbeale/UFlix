@@ -9,5 +9,5 @@ class Company extends AppModel {
 	
 	public $hasMany = array(
 		'CompaniesMovie'
-	};
+	);
 }

@@ -3,13 +3,7 @@
 
 <h1>Locations</h1>
 
-<div>
-	<ul>
-		<li><?php echo $this->Html->link(
-			'Add Location',array('controller' => 'locations', 'action' => 'add') );?> </li>
-	</ul>
-
-
+<?php echo $this->element('database_header');?>
 
 </div>
 <table>

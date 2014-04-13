@@ -2,16 +2,8 @@
 <!--File: /app/View/Companies/index.ctp -->
 
 <h1>Companies</h1>
+<?php echo $this->element('database_header');?>
 
-<div>
-	<ul>
-		<li><?php echo $this->Html->link(
-			'Add Company',array('controller' => 'companies', 'action' => 'add') );?> </li>
-	</ul>
-
-
-
-</div>
 <table>
 	<tr>
 		<th>company_id</th>

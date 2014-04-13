@@ -2,16 +2,8 @@
 <!--File: /app/View/Genres/index.ctp -->
 
 <h1>Genres</h1>
+<?php echo $this->element('database_header');?>
 
-<div>
-	<ul>
-		<li><?php echo $this->Html->link(
-			'Add Genre',array('controller' => 'genres', 'action' => 'add') );?> </li>
-	</ul>
-
-
-
-</div>
 <table>
 	<tr>
 		<th>genre_id</th>

@@ -9,5 +9,5 @@ class Genre extends AppModel {
 	
 	public $hasMany = array (
 		'GenresMovie'
-	};
+	);
 }

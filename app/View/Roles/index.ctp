@@ -2,14 +2,7 @@
 <!--File: /app/View/Roles/index.ctp -->
 
 <h1>Roles</h1>
-
-<div>
-	<ul>
-		<li><?php echo $this->Html->link(
-			'Add Role',array('controller' => 'roles', 'action' => 'add') );?> </li>
-	</ul>
-
-
+<?php echo $this->element('database_header');?>
 
 </div>
 <table>

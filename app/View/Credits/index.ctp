@@ -2,13 +2,7 @@
 <!--File: /app/View/Credits/index.ctp -->
 
 <h1>Credits</h1>
-
-<div>
-	<ul>
-		<li><?php echo $this->Html->link(
-			'Add Credit',array('controller' => 'credits', 'action' => 'add') );?> </li>
-	</ul>
-
+<?php echo $this->element('database_header');?>
 
 
 </div>

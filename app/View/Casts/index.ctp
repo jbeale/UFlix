@@ -2,13 +2,7 @@
 <!--File: /app/View/Casts/index.ctp -->
 
 <h1>Casts</h1>
-
-<div>
-	<ul>
-		<li><?php echo $this->Html->link(
-			'Add Cast',array('controller' => 'casts', 'action' => 'add') );?> </li>
-	</ul>
-
+<?php echo $this->element('database_header');?>
 
 
 </div>

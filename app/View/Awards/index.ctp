@@ -2,13 +2,7 @@
 <!--File: /app/View/Movies/index.ctp -->
 
 <h1>Awards</h1>
-
-<div>
-	<ul>
-		<li><?php echo $this->Html->link(
-			'Add Award',array('controller' => 'awards', 'action' => 'add') );?> </li>
-	</ul>
-
+<?php echo $this->element('database_header');?>
 
 
 </div>
