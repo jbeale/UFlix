@@ -1,6 +1,24 @@
 
 <!--File: /app/View/Movies/view.ctp -->
 
+<?php echo $this->Html->css('custom'); ?>
+
+<div id="movie-view-header">
+	<ul>
+		<li><?php echo $this->Html->link(
+			'Add Award',array('controller' => 'awards', 'action' => 'index') );?> </li>
+		<li><?php echo $this->Html->link(
+			'Add Location',array('controller' => 'locations', 'action' => 'index') );?> </li>
+		<li><?php echo $this->Html->link(
+			'Add Genre',array('controller' => 'genres', 'action' => 'index') );?> </li>
+		<li><?php echo $this->Html->link(
+			'Add Credit',array('controller' => 'credits', 'action' => 'index') );?> </li>
+		<li><?php echo $this->Html->link(
+			'Add Studio',array('controller' => 'companies', 'action' => 'index') );?> </li>
+	</ul>
+</div>
+
+
 <div>
 <h1>movie_id</h1>
 <h2> <?php echo $movie['Movie']['movie_id'];?></h2>
