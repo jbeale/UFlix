@@ -4,6 +4,10 @@
 <h1>Roles</h1>
 <?php echo $this->element('database_header');?>
 
+<div>
+	<?php echo $this->Html->link( 'Add', array('controller' => 'roles', 'action' => 'add')); ?>
+</div>
+
 </div>
 <table>
 	<tr>

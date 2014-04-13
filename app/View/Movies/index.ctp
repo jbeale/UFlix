@@ -2,9 +2,14 @@
 <!--File: /app/View/Movies/index.ctp -->
 
 <h1>Movies</h1>
+<div>
 <?php echo $this->element('database_header');?>
-
 </div>
+
+<div>
+	<?php echo $this->Html->link( 'Add', array('controller' => 'movies', 'action' => 'add')); ?>
+</div>
+
 <table>
 	<tr>
 		<th>movie_id</th>

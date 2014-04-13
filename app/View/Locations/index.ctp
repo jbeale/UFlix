@@ -5,7 +5,13 @@
 
 <?php echo $this->element('database_header');?>
 
+
+<div>
+	<?php echo $this->Html->link( 'Add', array('controller' => 'locations', 'action' => 'add')); ?>
 </div>
+
+
+<div>
 <table>
 	<tr>
 		<th>location_id</th>
@@ -29,3 +35,4 @@
 	
 	<?php endif; ?>
 </table>
+</div>

@@ -4,6 +4,7 @@
 
 <h1>Edit Movie</h1>
 
+
 <?php
 	echo $this->Form->create('Movie');
 	echo $this->Form->input('title');
@@ -18,4 +19,5 @@
 	echo $this->Form->end('Update Movie');
 ?>
 
-<div><?php echo $this->Html->link($this->Form->button('Cancel'), array('action' => 'index'), array('escape' => false, 'title' => 'Cancel') ); ?> </div>
+<div><?php echo $this->Html->link($this->Form->button('Cancel'), array('action' => 'index'),
+	array('escape' => false, 'title' => 'Cancel') ); ?> </div>

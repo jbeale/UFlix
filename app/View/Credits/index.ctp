@@ -5,7 +5,11 @@
 <?php echo $this->element('database_header');?>
 
 
+<div>
+	<?php echo $this->Html->link( 'Add', array('controller' => 'credits', 'action' => 'add')); ?>
 </div>
+
+<div>
 <table>
 	<tr>
 		<th>credit_id</th>
@@ -35,3 +39,4 @@
 	
 	<?php endif; ?>
 </table>
+</div>

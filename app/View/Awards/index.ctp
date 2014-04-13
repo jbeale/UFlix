@@ -1,11 +1,14 @@
 
-<!--File: /app/View/Movies/index.ctp -->
+<!--File: /app/View/Awards/index.ctp -->
 
 <h1>Awards</h1>
 <?php echo $this->element('database_header');?>
 
-
+<div>
+	<?php echo $this->Html->link( 'Add', array('controller' => 'awards', 'action' => 'add')); ?>
 </div>
+
+<div>
 <table>
 	<tr>
 		<th>award_id</th>
@@ -34,3 +37,4 @@
 	
 	<?php endif; ?>
 </table>
+</div>

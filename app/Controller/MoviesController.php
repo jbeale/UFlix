@@ -9,6 +9,7 @@ class MoviesController extends AppController{
 	
 	public $helpers = array('Html', 'Form', 'Session');
 	public $components = array('TmdbWrapper', 'Session');
+	public $uses = array( 'Movie', 'Award', 'Location', 'Genre', 'Company' );
 	
 	public function index() {
 		$this->set('movies', $this->Movie->find('all'));
@@ -29,6 +30,13 @@ class MoviesController extends AppController{
 		if(!$movie) {
 			throw new NotFoundException(__('Invalid movie.'));
 		}
+		
+		$this->set('allLocations',$this->Movie->LocationsMovie->find('list'));
+		$this->set('allGenres',$this->Movie->GenresMovie->find('list'));
+		$this->set('allStudios',$this->Movie->CompaniesMovie->find('list'));
+		$this->set('allAwards',$this->Movie->AwardsMovie->find('list'));
+		$this->set('allCredits',$this->Movie->CreditList->find('list'));
+		$this->set('awardsWon',$this->Movie->AwardsWon->find('list'));
 		
 		$this->set('movie', $movie);
 	}
@@ -71,8 +79,6 @@ class MoviesController extends AppController{
 			$this->request->data = $movie;
 		}
 		
-
-		
 	}
 	
 	public function delete($id) {
@@ -84,6 +90,20 @@ class MoviesController extends AppController{
 			$this->Session->setFlash( __('The movie with id: %s has been deleted.', h($id) ));
 			return $this->redirect(array('action' => 'index'));
 		}
+	}
+	
+	public function linkaward($id) {
+		if(!$id) {
+			throw new NotFoundException("Invalid movie.");
+		}
+		$movie = $this->Movie->findByMovieId($id);
+		
+		if(!$movie) {
+			throw new NotFoundException("Invalid movie.");
+		}
+		
+		$this->set('allAwards',$this->Award->find('list'));
+		
 	}
 
 }

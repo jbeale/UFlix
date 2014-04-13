@@ -12,7 +12,7 @@
 		<li><?php echo $this->Html->link(
 			'Genre',array('controller' => 'genres', 'action' => 'index') );?> </li>
 		<li><?php echo $this->Html->link(
-			'Studio',array('controller' => 'companies', 'action' => 'index') );?> </li>
+			'Company',array('controller' => 'companies', 'action' => 'index') );?> </li>
 		<li><?php echo $this->Html->link(
 			'Credit',array('controller' => 'credits', 'action' => 'index') );?> </li>
 		<li><?php echo $this->Html->link(

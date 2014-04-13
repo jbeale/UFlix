@@ -1,22 +1,29 @@
 
 <!--File: /app/View/Movies/view.ctp -->
 
+
 <?php echo $this->Html->css('custom'); ?>
 
 <div id="movie-view-header">
 	<ul>
 		<li><?php echo $this->Html->link(
-			'Add Award',array('controller' => 'awards', 'action' => 'index') );?> </li>
+			'Add a Award',array('controller' => 'movies', 'action' => 'linkaward',
+			$movie['Movie']['movie_id']) );?> </li>
 		<li><?php echo $this->Html->link(
-			'Add Location',array('controller' => 'locations', 'action' => 'index') );?> </li>
+			'Add a Location',array('controller' => 'movies', 'action' => 'add',
+			$movie['Movie']['movie_id'] ) );?> </li>
 		<li><?php echo $this->Html->link(
-			'Add Genre',array('controller' => 'genres', 'action' => 'index') );?> </li>
+			'Add a Genre',array('controller' => 'movies', 'action' => 'add',
+			$movie['Movie']['movie_id']) );?> </li>
 		<li><?php echo $this->Html->link(
-			'Add Credit',array('controller' => 'credits', 'action' => 'index') );?> </li>
+			'Add a Credit',array('controller' => 'movies', 'action' => 'add',
+			$movie['Movie']['movie_id'] ) );?> </li>
 		<li><?php echo $this->Html->link(
-			'Add Studio',array('controller' => 'companies', 'action' => 'index') );?> </li>
+			'Add a Studio',array('controller' => 'movies', 'action' => 'add',
+			$movie['Movie']['movie_id'] ) );?> </li>
 	</ul>
 </div>
+
 
 
 <div>
@@ -27,7 +34,7 @@
 <div>
 <h1>title</h1>
 <h2> <?php echo $movie['Movie']['title'];?></h2>
-</div>
+</div>ll
 
 <div>
 <h1>rating</h1>
@@ -63,5 +70,36 @@
 <h1>summary</h1>
 <h2> <?php echo $movie['Movie']['summary'];?></h2>
 </div>
+
+<div>
+<?php echo var_dump($allLocations);?>
+</div>
+
+<div>
+<?php echo var_dump($allGenres);?>
+</div>
+
+<div>
+<?php echo var_dump($allStudios);?>
+</div>
+
+<div>
+<?php echo var_dump($allAwards);?>
+</div>
+
+<div>
+<?php echo var_dump($allCredits);?>
+</div>
+
+<div>
+<?php echo var_dump($awardsWon);?>
+</div>
+
+
+
+
+
+
+
 
 <div><?php echo $this->Html->link($this->Form->button('Back'), array('action' => 'index'), array('escape' => false, 'title' => 'Cancel') ); ?> </div>

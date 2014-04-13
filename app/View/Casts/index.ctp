@@ -4,8 +4,11 @@
 <h1>Casts</h1>
 <?php echo $this->element('database_header');?>
 
-
+<div>
+	<?php echo $this->Html->link( 'Add', array('controller' => 'casts', 'action' => 'add')); ?>
 </div>
+
+<div>
 <table>
 	<tr>
 		<th>cast_id</th>
@@ -28,3 +31,4 @@
 	
 	<?php endif; ?>
 </table>
+</div>
