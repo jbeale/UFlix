@@ -32,12 +32,17 @@ class CreditsController extends AppController{
 	
 		if($this->request->is('post')) {
 			$this->Credit->create();
+			
 			if($this->Credit->save($this->request->data)) {
 				$this->Session->setFlash("Credit saved.");
 				return $this->redirect(array('action' => 'index'));
 			}
 			$this->Session->setFlash("Unable to add credit.");
 		}
+		
+		$this->set('allMovies',$this->Credit->CreditsBelongtoMovie->find('list'));
+		$this->set('allRoles', $this->Credit->CreditsBelongtoRole->find('list', array('fields' => array('roleName'))));
+		$this->set('allCasts', $this->Credit->CreditsBelongtoCast->find('list', array('fields' => array('castName'))));
 		
 	}
 	

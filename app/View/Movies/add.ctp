@@ -17,4 +17,7 @@
 	echo $this->Form->end('Save Movie');
 ?>
 
-<div><?php echo $this->Html->link($this->Form->button('Cancel'), array('action' => 'index'), array('escape' => false, 'title' => 'Cancel') ); ?> </div>
+<div><?php echo $this->Html->link($this->Form->button('Cancel'),
+	array('action' => 'index'), array('escape' => false, 'title' => 'Cancel') ); ?> </div>
+	
+	

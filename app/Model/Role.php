@@ -10,7 +10,7 @@ class Role extends AppModel {
 	public $hasMany = array(
 		'RoleHaveManyCredits' => array(
 			'className' => 'Credit',
-			'foreignKey' => 'credit_id'
+			'foreignKey' => 'role_id'
 		)
 	);
 	
