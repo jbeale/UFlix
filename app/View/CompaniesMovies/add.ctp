@@ -1,16 +1,16 @@
 
-<!--File: /app/View/AwardsMovies/add.ctp -->
+<!--File: /app/View/CompaniesMovies/add.ctp -->
 
 
-<h1>Add Nominations</h1>
+<h1>Add a Company</h1>
 
 <?php
-	echo $this->Form->create('AwardsMovie');
+	echo $this->Form->create('CompaniesMovie');
 	echo $this->Form->input('movie_id', array(
 		'options' => array($allmovies) ));
-	echo $this->Form->input('award_id', array(
-		'options' => array($allawards)) );
-	echo $this->Form->end('Save New Nomination');
+	echo $this->Form->input('company_id', array(
+		'options' => array($allcompanies)) );
+	echo $this->Form->end('Save New Company');
 ?>
 
 <div><?php echo $this->Html->link($this->Form->button('Cancel'),

@@ -13,13 +13,13 @@
 			'Add a Location',array('controller' => 'locationsmovies', 'action' => 'add',
 			$movie['Movie']['movie_id'] ) );?> </li>
 		<li><?php echo $this->Html->link(
-			'Add a Genre',array('controller' => 'movies', 'action' => 'add',
+			'Add a Genre',array('controller' => 'genresmovies', 'action' => 'add',
 			$movie['Movie']['movie_id']) );?> </li>
 		<li><?php echo $this->Html->link(
-			'Add a Credit',array('controller' => 'movies', 'action' => 'add',
+			'Add a Credit',array('controller' => 'credits', 'action' => 'add',
 			$movie['Movie']['movie_id'] ) );?> </li>
 		<li><?php echo $this->Html->link(
-			'Add a Company',array('controller' => 'movies', 'action' => 'add',
+			'Add a Company',array('controller' => 'companiesmovies', 'action' => 'add',
 			$movie['Movie']['movie_id'] ) );?> </li>
 	</ul>
 </div>
@@ -34,7 +34,7 @@
 <div>
 <h1>title</h1>
 <h2> <?php echo $movie['Movie']['title'];?></h2>
-</div>ll
+</div>
 
 <div>
 <h1>rating</h1>
@@ -136,9 +136,66 @@
 </div>
 
 
-<?php var_dump($allLocations);?>
+<div>
+	<table>
+		<tr>
+		<th>filming Genres</th>
+		</tr>
+		<?php if (!$allGenres):?>
+			<tr> <td> No Genres. </td></tr>
+		<?php else: ?>
+
+		<?php foreach ($allGenres as $genre):?>
+			<tr>
+				<td> <?php echo $genre['Genre']['genreName'];?></td>
+			</tr>
+		<?php endforeach; ?>
+		<?php unset ($genre)?>
+		<?php endif; ?>
+	</table>
+</div>
+
+<div>
+	<table>
+		<tr>
+		<th>Role</th>
+		<th>Cast Member</th>
+		</tr>
+		<?php if (!$allCredits):?>
+			<tr> <td> No Credits. </td></tr>
+		<?php else: ?>
+
+		<?php foreach ($allCredits as $credit):?>
+			<tr>
+				<td> <?php echo $credit['CreditsBelongtoRole']['roleName'];?></td>
+				<td> <?php echo $credit['CreditsBelongtoCast']['castName'];?></td>
+			</tr>
+		<?php endforeach; ?>
+		<?php unset ($credit)?>
+		<?php endif; ?>
+	</table>
+</div>
 
 
+<div>
+	<table>
+		<tr>
+		<th>Companies</th>
+		</tr>
+		<?php if (!$allCompanies):?>
+			<tr> <td> No Companies. </td></tr>
+		<?php else: ?>
+
+		<?php foreach ($allCompanies as $company):?>
+			<tr>
+				<td> <?php echo $company['Company']['companyName'];?></td>
+				<td> <?php echo $company['Company']['companyName'];?></td>
+			</tr>
+		<?php endforeach; ?>
+		<?php unset ($company)?>
+		<?php endif; ?>
+	</table>
+</div>
 
 
 <div><?php echo $this->Html->link($this->Form->button('Back'), array('action' => 'index'), array('escape' => false, 'title' => 'Cancel') ); ?> </div>

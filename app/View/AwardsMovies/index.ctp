@@ -14,7 +14,7 @@
 	<tr>
 		<th>id</th>
 		<th>movie</th>
-		<th>awardth>
+		<th>award</th>
 	</tr>
 	<?php if(!$awardsmovies): ?>
 	<tr> <td> There are no movies with awards. </td></tr>

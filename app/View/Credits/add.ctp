@@ -20,14 +20,3 @@
 <div><?php echo $this->Html->link($this->Form->button('Cancel'),
 	array('action' => 'index'), array('escape' => false, 'title' => 'Cancel') ); ?> </div>
 	
-	<div>
-	<?php var_dump($allMovies);?>
-	</div>
-	
-	<div>
-	<?php var_dump($allRoles);?>
-	</div>
-	
-	<div>
-	<?php var_dump($allCasts);?>
-	</div>
