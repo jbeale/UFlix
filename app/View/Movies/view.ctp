@@ -167,8 +167,10 @@
 
 		<?php foreach ($allCredits as $credit):?>
 			<tr>
-				<td> <?php echo $credit['CreditsBelongtoRole']['roleName'];?></td>
-				<td> <?php echo $credit['CreditsBelongtoCast']['castName'];?></td>
+				<?php if($credit['CreditList']['movie_id'] == $movie['Movie']['movie_id'] ):?>
+					<td> <?php echo $credit['CreditsBelongtoRole']['roleName'];?></td>
+					<td> <?php echo $credit['CreditsBelongtoCast']['castName'];?></td>
+				<?php endif;?>
 			</tr>
 		<?php endforeach; ?>
 		<?php unset ($credit)?>
@@ -196,6 +198,5 @@
 		<?php endif; ?>
 	</table>
 </div>
-
 
 <div><?php echo $this->Html->link($this->Form->button('Back'), array('action' => 'index'), array('escape' => false, 'title' => 'Cancel') ); ?> </div>
