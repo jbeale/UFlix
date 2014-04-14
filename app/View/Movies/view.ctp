@@ -127,7 +127,7 @@
 
 		<?php foreach ($allLocations as $alllocation):?>
 			<tr>
-				<td> <?php echo $alllocation['LcationsMovie']['country'];?></td>
+				<td> <?php echo $alllocation['Location']['country'];?></td>
 			</tr>
 		<?php endforeach; ?>
 		<?php unset ($alllocation)?>
@@ -136,7 +136,7 @@
 </div>
 
 
-
+<?php var_dump($allLocations);?>
 
 
 

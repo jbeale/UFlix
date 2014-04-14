@@ -31,11 +31,11 @@ class MoviesController extends AppController{
 			throw new NotFoundException(__('Invalid movie.'));
 		}
 		
-		$this->set('allLocations',$this->Movie->LocationsMovie->find('list'));
-		$this->set('allGenres',$this->Movie->GenresMovie->find('list'));
-		$this->set('allCompanies',$this->Movie->CompaniesMovie->find('list'));
+		$this->set('allLocations',$this->Movie->LocationsMovie->find('all'));
+		$this->set('allGenres',$this->Movie->GenresMovie->find('all'));
+		$this->set('allCompanies',$this->Movie->CompaniesMovie->find('all'));
 		$this->set('allAwards',$this->Movie->AwardsMovie->find('all'));
-		$this->set('allCredits',$this->Movie->CreditList->find('list'));
+		$this->set('allCredits',$this->Movie->CreditList->find('all'));
 		$this->set('awardsWon',$this->Movie->AwardsWon->find('all'));
 		
 		$this->set('movie', $movie);
