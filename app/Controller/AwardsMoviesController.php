@@ -19,21 +19,10 @@ class AwardsMoviesController extends AppController{
 	}
 	
 	
-	public function add($movie_id=null) {
+	public function add() {
 	
 		$this->set('allawards', $this->Award->find('list', array('fields' => array('awardName'))) );
-		
-		if(!$movie_id){
-			$this->set('allmovies', $this->Movie->find('list'));
-		}
-		else {
-			$allmovies = $this->Movie->find( 'list', $movie_id, array('movie_id', 'title'));
-			
-			if(!$allmovies) {
-				throw new NotFoundException("Invalid Movie.");
-			}
-			$this->set('allmovies', $allmovies);
-		}
+		$this->set('allmovies', $this->Movie->find('list'));
 		
 		if($this->request->is('post')) {
 

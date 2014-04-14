@@ -33,10 +33,10 @@ class MoviesController extends AppController{
 		
 		$this->set('allLocations',$this->Movie->LocationsMovie->find('list'));
 		$this->set('allGenres',$this->Movie->GenresMovie->find('list'));
-		$this->set('allStudios',$this->Movie->CompaniesMovie->find('list'));
-		$this->set('allAwards',$this->Movie->AwardsMovie->find('list'));
+		$this->set('allCompanies',$this->Movie->CompaniesMovie->find('list'));
+		$this->set('allAwards',$this->Movie->AwardsMovie->find('all'));
 		$this->set('allCredits',$this->Movie->CreditList->find('list'));
-		$this->set('awardsWon',$this->Movie->AwardsWon->find('list'));
+		$this->set('awardsWon',$this->Movie->AwardsWon->find('all'));
 		
 		$this->set('movie', $movie);
 	}

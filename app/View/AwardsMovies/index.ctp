@@ -13,8 +13,8 @@
 <table>
 	<tr>
 		<th>id</th>
-		<th>movie_id</th>
-		<th>award_id</th>
+		<th>movie</th>
+		<th>awardth>
 	</tr>
 	<?php if(!$awardsmovies): ?>
 	<tr> <td> There are no movies with awards. </td></tr>

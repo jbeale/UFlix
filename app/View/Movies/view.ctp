@@ -10,7 +10,7 @@
 			'Add a Award',array('controller' => 'awardsmovies', 'action' => 'add',
 			$movie['Movie']['movie_id']) );?> </li>
 		<li><?php echo $this->Html->link(
-			'Add a Location',array('controller' => 'movies', 'action' => 'add',
+			'Add a Location',array('controller' => 'locationsmovies', 'action' => 'add',
 			$movie['Movie']['movie_id'] ) );?> </li>
 		<li><?php echo $this->Html->link(
 			'Add a Genre',array('controller' => 'movies', 'action' => 'add',
@@ -74,46 +74,66 @@
 
 <div>
 	<table>
-	<tr>
-	<th>award_id</th>
-	<th>movie_id</th>
-	</tr>
-	<?php foreach ($allAwards as $award):?>
 		<tr>
-			<td> <?php echo $award?></td>
+		<th>award nominations</th>
+		<th> year</th>
 		</tr>
-	<?php endforeach; ?>
-	<?php unset ($award)?>
+		<?php if (!$allAwards):?>
+			<tr> <td> No Awards </td></tr>
+		<?php else: ?>
 
+		<?php foreach ($allAwards as $award):?>
+			<tr>
+				<td> <?php echo $award['Award']['awardName'];?></td>
+				<td> <?php echo $award['Award']['year'];?></td>
+			</tr>
+		<?php endforeach; ?>
+		<?php unset ($award)?>
+		<?php endif; ?>
 	</table>
 </div>
 
 
-
 <div>
-<?php echo var_dump($allLocations);?>
+	<table>
+		<tr>
+		<th>award won</th>
+		<th> year</th>
+		</tr>
+		<?php if (!$awardsWon):?>
+			<tr> <td> No Awards </td></tr>
+		<?php else: ?>
+
+		<?php foreach ($awardsWon as $awardwon):?>
+			<tr>
+				<td> <?php echo $awardwon['AwardsWon']['awardName'];?></td>
+				<td> <?php echo $awardwon['AwardsWon']['year'];;?></td>
+			</tr>
+		<?php endforeach; ?>
+		<?php unset ($award)?>
+		<?php endif; ?>
+	</table>
 </div>
 
-<div>
-<?php echo var_dump($allGenres);?>
-</div>
 
 <div>
-<?php echo var_dump($allStudios);?>
-</div>
+	<table>
+		<tr>
+		<th>filming locations</th>
+		</tr>
+		<?php if (!$allLocations):?>
+			<tr> <td> No filming locations </td></tr>
+		<?php else: ?>
 
-<div>
-<?php echo var_dump($allAwards);?>
+		<?php foreach ($allLocations as $alllocation):?>
+			<tr>
+				<td> <?php echo $alllocation['LcationsMovie']['country'];?></td>
+			</tr>
+		<?php endforeach; ?>
+		<?php unset ($alllocation)?>
+		<?php endif; ?>
+	</table>
 </div>
-
-<div>
-<?php echo var_dump($allCredits);?>
-</div>
-
-<div>
-<?php echo var_dump($awardsWon);?>
-</div>
-
 
 
 
