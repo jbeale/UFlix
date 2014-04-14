@@ -9,8 +9,12 @@ class CreditsController extends AppController{
 	
 	public $helpers = array('Html', 'Form', 'Session');
 	public $components = array('Session');
+	//public $uses = array('Movie', 'Role', 'Cast', 'Credit');
 	
 	public function index() {
+		$this->set('allmovies', $this->Credit->CreditsBelongtoMovie->find('list', array('fields' => array('title'))));
+		$this->set('allroles', $this->Credit->CreditsBelongtoRole->find('list', array('fields' => array('roleName'))));
+		$this->set('allcasts', $this->Credit->CreditsBelongtoCast->find('list', array('fields' => array('castName'))));
 		$this->set('credits', $this->Credit->find('all'));
 	}
 	

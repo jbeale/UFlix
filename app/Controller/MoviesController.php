@@ -91,19 +91,5 @@ class MoviesController extends AppController{
 			return $this->redirect(array('action' => 'index'));
 		}
 	}
-	
-	public function linkaward($id) {
-		if(!$id) {
-			throw new NotFoundException("Invalid movie.");
-		}
-		$movie = $this->Movie->findByMovieId($id);
-		
-		if(!$movie) {
-			throw new NotFoundException("Invalid movie.");
-		}
-		
-		$this->set('allAwards',$this->Award->find('list'));
-		
-	}
 
 }

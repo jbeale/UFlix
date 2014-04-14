@@ -7,7 +7,7 @@
 <div id="movie-view-header">
 	<ul>
 		<li><?php echo $this->Html->link(
-			'Add a Award',array('controller' => 'awardsmovies', 'action' => 'add',
+			'Add a Award',array('controller' => 'movies', 'action' => 'linkaward',
 			$movie['Movie']['movie_id']) );?> </li>
 		<li><?php echo $this->Html->link(
 			'Add a Location',array('controller' => 'movies', 'action' => 'add',

@@ -9,22 +9,40 @@ class AwardsMoviesController extends AppController{
 	
 	public $helpers = array('Html', 'Form', 'Session');
 	public $components = array('Session');
-	public $uses = array('Movie','Award');
+	public $uses = array('AwardsMovie','Movie','Award');
 	
 	public function index() {
+	
+		$this->set('allawards', $this->Award->find('list', array('fields' => array('awardName'))) );
+		$this->set('allmovies', $this->Movie->find('list'));
 		$this->set('awardsmovies', $this->AwardsMovie->find('all'));
 	}
 	
 	
-	public function add() {
+	public function add($movie_id=null) {
 	
+		$this->set('allawards', $this->Award->find('list', array('fields' => array('awardName'))) );
+		
+		if(!$movie_id){
+			$this->set('allmovies', $this->Movie->find('list'));
+		}
+		else {
+			$allmovies = $this->Movie->find( 'list', $movie_id, array('movie_id', 'title'));
+			
+			if(!$allmovies) {
+				throw new NotFoundException("Invalid Movie.");
+			}
+			$this->set('allmovies', $allmovies);
+		}
+		
 		if($this->request->is('post')) {
-			$this->Movie->create();
-			if($this->Movie->save($this->request->data)) {
-				$this->Session->setFlash("Movie saved.");
+
+			$this->AwardsMovie->create();
+			if($this->AwardsMovie->save($this->request->data)) {
+				$this->Session->setFlash("Movie has new award.");
 				return $this->redirect(array('action' => 'index'));
 			}
-			$this->Session->setFlash("Unable to add movie.");
+			$this->Session->setFlash("Unable to add Movie and Award Relation.");
 		}
 		
 	}
@@ -32,27 +50,30 @@ class AwardsMoviesController extends AppController{
 	public function edit($id) {
 
 		if(!$id) {
-			throw new NotFoundException("Invalid movie.");
+			throw new NotFoundException("Invalid Awards Movie.");
 		}
-		$movie = $this->Movie->findByMovieId($id);
-		$this->set('allStudios',$this->CompaniesMovie->find('list'));
+		$awardsmovie = $this->AwardsMovie->findById($id);
 		
-		if(!$movie) {
-			throw new NotFoundException("Invalid movie.");
+		$this->set('allawards', $this->Award->find('list', array('fields' => array('awardName'))) );
+		$this->set('allmovies', $this->Movie->find('list'));
+		
+		
+		if(!$awardsmovie) {
+			throw new NotFoundException("Invalid Awards Movie.");
 		}
 		
 		if($this->request->is(array('post','put'))) {
 		
-			if($this->Movie->save($this->request->data['Movie'])) {
-				$this->Session->setFlash("Movie Updated");
+			if($this->AwardsMovie->save($this->request->data)) {
+				$this->Session->setFlash("Movie joined to Award Updated");
 				$this->redirect(array('action' => 'index'));
 			}
 			
-			$this->Session->setFlash("Unable to update movie.");
+			$this->Session->setFlash("Unable to relate movie and award.");
 		}
 		
 		if(!$this->request->data) {
-			$this->request->data = $movie;
+			$this->request->data = $awardsmovie;
 		}
 		
 
@@ -64,7 +85,7 @@ class AwardsMoviesController extends AppController{
 			throw new MethodNotAllowedException();
 		}
 		
-		if($this->Movie->delete($id)) {
+		if($this->AwardsMovie->delete($id)) {
 			$this->Session->setFlash( __('The movie with id: %s has been deleted.', h($id) ));
 			return $this->redirect(array('action' => 'index'));
 		}

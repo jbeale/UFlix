@@ -25,9 +25,9 @@
 		<tr> 
 			<td> <?php echo $this->Html->link( $credit['Credit']['credit_id'],
 			array('controller' => 'credits', 'action' => 'view', $credit['Credit']['credit_id']));?></td>
-			<td> <?php echo $credit['Credit']['movie_id']?></td>
-			<td> <?php echo $credit['Credit']['role_id']?></td>
-			<td> <?php echo $credit['Credit']['cast_id']?></td>
+			<td> <?php echo $allmovies[$credit['Credit']['movie_id']]?></td>
+			<td> <?php echo $allroles[$credit['Credit']['role_id']]?></td>
+			<td> <?php echo $allcasts[$credit['Credit']['cast_id']]?></td>
 			<td> <?php echo $credit['Credit']['character']?></td>
 			
 			<td><?php echo $this->Html->link( 'Edit', array('action' => 'edit', $credit['Credit']['credit_id']));?></td>
