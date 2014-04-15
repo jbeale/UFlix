@@ -191,7 +191,6 @@
 		<?php foreach ($allCompanies as $company):?>
 			<tr>
 				<td> <?php echo $company['Company']['companyName'];?></td>
-				<td> <?php echo $company['Company']['companyName'];?></td>
 			</tr>
 		<?php endforeach; ?>
 		<?php unset ($company)?>
